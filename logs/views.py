@@ -1,7 +1,7 @@
 from rest_framework import generics
 
 from logs.models import Piece
-from logs.serializers import PieceSerializer
+from logs.serializers import PieceSerializer, PieceDetailSerializer
 
 
 class PieceList(generics.ListCreateAPIView):
@@ -11,4 +11,4 @@ class PieceList(generics.ListCreateAPIView):
 
 class PieceDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Piece.objects.all()
-    serializer_class = PieceSerializer
+    serializer_class = PieceDetailSerializer

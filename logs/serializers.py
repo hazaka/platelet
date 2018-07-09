@@ -39,3 +39,12 @@ class PieceSerializer(serializers.ModelSerializer):
         for title_data in titles_data:
             piece.titles.add(Name.objects.create(**title_data))
         return piece
+
+
+class PieceDetailSerializer(serializers.ModelSerializer):
+    titles = NameSerializer(read_only=True, many=True)
+    title_ids = serializers.PrimaryKeyRelatedField(write_only=True, many=True, source='titles', queryset=Name.objects.all())
+
+    class Meta:
+        model = Piece
+        fields = '__all__'
