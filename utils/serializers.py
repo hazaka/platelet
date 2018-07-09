@@ -10,6 +10,9 @@ class LanguageSerializer(serializers.ModelSerializer):
 
 
 class NameSerializer(serializers.ModelSerializer):
+    language = LanguageSerializer(read_only=True)
+    language_id = serializers.PrimaryKeyRelatedField(source='language', queryset=Language.objects.all())
+
     class Meta:
         model = Name
         fields = '__all__'
