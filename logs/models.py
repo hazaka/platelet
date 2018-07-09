@@ -2,6 +2,8 @@ import os
 
 from django.db import models
 
+from utils.models import Name
+
 
 def image_path(instance, filename):
     return os.path.join('logs', 'image', instance.author.username, filename)
@@ -43,4 +45,8 @@ class Watch(models.Model):
 
 
 class Piece(models.Model):
-    pass
+    titles = models.ManyToManyField('utils.Name', blank=False)
+    # TODO: add more information
+
+    def __str__(self):
+        return Name.get_default_name(self.titles)
