@@ -14,7 +14,7 @@ class LanguageDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = LanguageSerializer
 
 
-class NameList(generics.ListAPIView):
+class NameList(generics.ListCreateAPIView):
     queryset = Name.objects.all()
     serializer_class = NameSerializer
 
