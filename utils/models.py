@@ -4,7 +4,7 @@ from django.db.models import Manager
 
 class Name(models.Model):
     text = models.CharField(max_length=255)
-    language = models.ForeignKey('utils.Language', null=True)
+    language = models.ForeignKey('utils.Language', null=True, on_delete=models.SET_NULL)
     is_default = models.BooleanField(default=False)
 
     @staticmethod
@@ -16,11 +16,11 @@ class Name(models.Model):
 
 
 class Language(models.Model):
-    name = models.CharField(max_length=20)
+    public_name = models.CharField(max_length=20)
     native_name = models.CharField(max_length=20, null=True)
     code = models.CharField(max_length=5, null=True)
 
     def __str__(self):
         if self.native_name:
-            return f'{self.name}({self.native_name})'
-        return f'{self.name}'
+            return f'{self.public_name}({self.native_name})'
+        return f'{self.public_name}'
