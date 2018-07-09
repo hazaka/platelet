@@ -49,4 +49,4 @@ class Piece(models.Model):
     # TODO: add more information
 
     def __str__(self):
-        return Name.get_default_name(self.titles)
+        return f'{self.titles.first()}'
