@@ -31,16 +31,6 @@ class PieceSerializer(serializers.ModelSerializer):
         if not titles:
             raise serializers.ValidationError('There should be at least one title.')
 
-        has_default = False
-        for title in titles:
-            if title.get('is_default'):
-                if has_default:
-                    has_default = False
-                    break
-                has_default = True
-        if not has_default:
-            raise serializers.ValidationError('There should be exactly one default title.')
-
         return titles
 
     def create(self, validated_data: OrderedDict):
