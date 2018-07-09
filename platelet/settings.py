@@ -31,6 +31,8 @@ ALLOWED_HOSTS = ['platelet.info']
 # Application definition
 
 INSTALLED_APPS = [
+    'logs.apps.LogsConfig',
+    'utils.apps.UtilsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
