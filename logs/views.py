@@ -1,3 +1,9 @@
-from django.shortcuts import render
+from rest_framework import generics
 
-# Create your views here.
+from logs.models import Piece
+from logs.serializers import PieceSerializer
+
+
+class PieceList(generics.ListCreateAPIView):
+    queryset = Piece.objects.all()
+    serializer_class = PieceSerializer
